@@ -15,6 +15,14 @@
     </main>
     <script>
         /* Buena suerte! */
+        const terms = document.getElementById('acceptTerms');
+        const continueBtn = document.getElementById('continueBtn2');
+
+        terms.addEventListener("change", function(event) {
+            console.log("Términos aceptados:", event.target.value);
+
+            continueBtn.disabled = !this.checked;
+        });
     </script>  
 </body>
 </html>

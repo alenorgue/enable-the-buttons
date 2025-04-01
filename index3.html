@@ -8,6 +8,9 @@
     <style>
         .number {
             display: flex;
+            gap: 10px;
+            justify-content: center;
+            align-content: center;
         }
         .number img {
             width: 200px;
@@ -36,7 +39,27 @@
         };
 
         // Para acceder a la propiedad "+34", recuerda que también se puede hacer asi contruFlags["+34"]
+        const phonePrefix = document.getElementById('phonePrefix');
+        const phoneNumber = document.getElementById('phoneNumber');
+        const flagDisplay = document.getElementById('flagDisplay');
+        const continueBtn = document.getElementById('continue');
 
+        function validateInput() {
+            const number = phoneNumber.value
+            const prefix = phonePrefix.value
+
+            if (phoneNumber.value.length === 9 && prefix in countryFlags) {
+                continueBtn.disabled = false;
+                flagDisplay.src = countryFlags[prefix];
+        
+            }
+            else {
+                continueBtn.disabled = true;
+                flagDisplay.src = "";
+            }
+        };
+        phonePrefix.addEventListener("input", validateInput);
+        phoneNumber.addEventListener("input", validateInput);
     </script>  
 </body>
 </html>

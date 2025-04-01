@@ -12,13 +12,20 @@
         <label for="agreement">Acepto los términos:</label>
         <select id="agreement">
             <option value="maybe" selected>Puede</option>
-            <option value="yes">No</option>
-            <option value="no">Sí</option>
+            <option value="no">No</option>
+            <option value="yes">Sí</option>
         </select>
         <button id="continueBtn1" disabled>Continuar</button>
     </main>   
     <script>
-        /* Buena suerte! */
+        const terms = document.getElementById('agreement');
+        const continueBtn = document.getElementById('continueBtn1');
+
+        terms.addEventListener("change", function(event) {
+            console.log("Términos aceptados:", event.target.value);
+
+            continueBtn.disabled = event.target.value !== 'yes';
+        });
     </script>
 </body>
 </html>
